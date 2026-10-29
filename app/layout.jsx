@@ -15,9 +15,9 @@ export const metadata = {
   description,
   openGraph: {
     type: 'website', url: '/', siteName: `${CONFIG.name1} & ${CONFIG.name2}`, title, description,
-    images: [{ url: '/og.jpg', width: 1200, height: 800 }],
+    images: [{ url: `${CONFIG.siteUrl}/og.jpg`, width: 1200, height: 800, alt: `Happy Anniversary — ${CONFIG.name1} and ${CONFIG.name2}` }],
   },
-  twitter: { card: 'summary_large_image', title, description, images: ['/og.jpg'] },
+  twitter: { card: 'summary_large_image', title, description, images: [`${CONFIG.siteUrl}/og.jpg`] },
 };
 export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover', themeColor: '#1a0710' };
 
