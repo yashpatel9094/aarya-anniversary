@@ -10,11 +10,22 @@ export default function Effects() {
     const video = $('#bgv');
     const soundButton = $('#snd');
     video?.play().catch(() => {});
-    $('#open')?.addEventListener('click', () => $('#gate')?.classList.add('off'));
+    $('#open')?.addEventListener('click', () => {
+      $('#gate')?.classList.add('off');
+      if (!video) return;
+      video.muted = false;
+      video.volume = 0.55;
+      soundButton.textContent = '♫';
+      video.play().catch(() => {
+        video.muted = true;
+        soundButton.textContent = '♪';
+        video.play().catch(() => {});
+      });
+    });
     soundButton?.addEventListener('click', () => {
       if (!video) return;
       video.muted = !video.muted;
-      soundButton.textContent = video.muted ? '♪' : '◼';
+      soundButton.textContent = video.muted ? '♪' : '♫';
       video.play().catch(() => {});
     });
 
