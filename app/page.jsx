@@ -105,7 +105,7 @@ export default function Home() {
           <button className="cta rv" id="sur">A note for you</button>
           <p id="surprise">Happy Anniversary, my love. Thank you for every smile, every hug, and every memory. This is just the beginning of our forever.</p>
         </section>
-        <footer>MADE WITH LOVE, FOR {CONFIG.name2.toUpperCase()}</footer>
+        <footer>MADE WITH LOVE, FOR {CONFIG.name2.toUpperCase()}<br />Developed by: Yash Patel — Magento 2 Developer</footer>
       </main>
 
       <Effects />
