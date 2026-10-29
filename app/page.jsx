@@ -58,8 +58,8 @@ export default function Home() {
           <div className="eyebrow rv">FROM THE HEART</div>
           <h2 className="rv">A few words for you</h2>
           <div className="poem rv">
-            <div className="verse"><span className="l">Koi saath dil lage, woh pyaar nahi.</span><span className="l">Jiske bina dil na lage, wahi pyaar hai.</span></div>
-            <div className="verse"><span className="l">Mujhe chaand nahi chahiye.</span><span className="l">Bas tumhara saath mile, toh dil ko sukoon mile.</span></div>
+            <div className="verse"><span className="l">કોઈ સાથે દિલ લાગે એ પ્રેમ નથી,</span><span className="l">પણ જેના વગર ક્યાંય દિલ ના લાગે એ પ્રેમ છે. ♥</span></div>
+            <div className="verse"><span className="l">હું નથી ગગન કે મને ચાંદ મળે,</span><span className="l">બસ એક તારી ચાહત મળે તો મારા દિલને રાહત મળે. 🌙</span></div>
           </div>
         </section>
 
