@@ -3,9 +3,10 @@ import Effects from '../components/Effects';
 import { CONFIG } from '../lib/config';
 
 const Pic = ({ n }) => (
-  <Image src={`/images/${n}.jpg`} alt={`Memory ${n}`} width={800} height={1067} sizes="(max-width:760px) 50vw, 360px" quality={75} />
+  <Image src={`/images/${n}.jpg`} alt={`A favourite memory ${n}`} width={800} height={1000} sizes="(max-width:760px) 50vw, 320px" quality={82} />
 );
 
+const memories = ['Where it all began', 'Us, always', 'A beautiful day', 'Every moment', 'Just us', 'A little adventure', 'Pure joy', 'Together', 'Forever'];
 const notes = [
   ['You are the reason my ordinary days feel like a movie. Thank you for being my person.', 'Always yours'],
   ['Tere saath chalte chalte pata hi nahi chala, kab tu meri aadat se meri zaroorat ban gayi.', 'Meri jaan'],
@@ -23,13 +24,13 @@ export default function Home() {
       </video>
       <div className="veil" />
       <canvas id="fx" />
-      <button id="snd" aria-label="Sound on/off">🔇</button>
+      <button id="snd" aria-label="Sound on or off">♪</button>
 
       <div id="gate">
         <div>
           <h1>For You, My Love</h1>
-          <p>Tap the heart to open our story</p>
-          <button className="heartbtn" id="open" aria-label="Open">❤️</button>
+          <p>Tap to open our story</p>
+          <button className="heartbtn" id="open" aria-label="Open">♥</button>
         </div>
       </div>
 
@@ -37,62 +38,59 @@ export default function Home() {
         <section id="hero">
           <div className="small">HAPPY ANNIVERSARY</div>
           <h1>Happy Anniversary</h1>
-          <div className="names"><b>{CONFIG.name1}</b> &nbsp;❤&nbsp; <b>{CONFIG.name2}</b></div>
-          <div className="scroll">⌄</div>
+          <div className="names"><b>{CONFIG.name1}</b><span className="heart">♥</span><b>{CONFIG.name2}</b></div>
+          <div className="scroll">↓</div>
         </section>
 
         <section>
-          <h2 className="rv">Our Time Together</h2>
+          <div className="eyebrow rv">OUR STORY</div>
+          <h2 className="rv">Time together</h2>
           <div className="count rv" id="cnt">
             <div><span id="d">0</span><small>DAYS</small></div>
             <div><span id="h">0</span><small>HOURS</small></div>
             <div><span id="m">0</span><small>MINUTES</small></div>
             <div><span id="s">0</span><small>SECONDS</small></div>
           </div>
-          <p className="since rv">…and every second is still my favourite.</p>
+          <p className="since rv">And every second is still my favourite.</p>
         </section>
 
         <section>
-          <h2 className="rv">Two Lines, One Heart</h2>
-          <div className="poem">
-            <div className="verse"><span className="l">કોઈ સાથે દિલ લાગે એ પ્રેમ નથી,</span><span className="l">પણ જેના વગર ક્યાંય દિલ ના લાગે એ પ્રેમ છે !! ❤️</span></div>
-            <div className="verse moon"><span className="l">હું નથી ગગન કે મને ચાંદ મળે,</span><span className="l">બસ એક તારી ચાહત મળે તો મારા દિલને રાહત મળે !! 🌙</span></div>
+          <div className="eyebrow rv">FROM THE HEART</div>
+          <h2 className="rv">A few words for you</h2>
+          <div className="poem rv">
+            <div className="verse"><span className="l">Koi saath dil lage, woh pyaar nahi.</span><span className="l">Jiske bina dil na lage, wahi pyaar hai.</span></div>
+            <div className="verse"><span className="l">Mujhe chaand nahi chahiye.</span><span className="l">Bas tumhara saath mile, toh dil ko sukoon mile.</span></div>
           </div>
         </section>
 
-        <section>
-          <h2 className="rv">Our Memories</h2>
+        <section className="gallery-section">
+          <div className="gallery-head">
+            <div className="eyebrow rv">CHAPTERS WE LOVE</div>
+            <h2 className="rv">Our memories</h2>
+            <p className="section-intro rv">A small collection of the moments that still make us smile.</p>
+          </div>
           <div className="gal">
-            <figure className="ph e1"><div className="in3"><Pic n={1} /></div><figcaption>Where it all began</figcaption></figure>
-            <figure className="ph e2"><Pic n={2} /><figcaption>Us, always</figcaption></figure>
-            <figure className="ph e3"><Pic n={3} /><figcaption>My favourite view</figcaption></figure>
-            <figure className="ph e4"><Pic n={4} /><figcaption>Every moment in colour</figcaption></figure>
-            <figure className="ph e5"><Pic n={5} /></figure>
-            <figure className="ph e6"><div className="fl"><div className="f"><Pic n={6} /></div><div className="b">You are my home 🏡</div></div></figure>
-            <figure className="ph e7"><Pic n={7} /><figcaption>Pure magic</figcaption></figure>
-            <figure className="ph e8"><Pic n={8} /><figcaption>You shine brighter</figcaption></figure>
-            <figure className="ph e9"><Pic n={9} /><figcaption>Forever &amp; ever</figcaption></figure>
+            {memories.map((caption, index) => <figure className="ph" key={caption}><Pic n={index + 1} /><figcaption>{caption}</figcaption></figure>)}
           </div>
         </section>
 
         <section>
-          <h2 className="rv">Little Notes For You</h2>
+          <div className="eyebrow rv">SIX SMALL REMINDERS</div>
+          <h2 className="rv">Little notes for you</h2>
           <div className="notes">
-            {notes.map(([t, by]) => (
-              <div className="note rv" key={by}>{t}<em>— {by}</em></div>
-            ))}
+            {notes.map(([text, by]) => <div className="note rv" key={by}>{text}<em>— {by}</em></div>)}
           </div>
         </section>
 
         <section>
           <div className="big rv">I love you more than yesterday</div>
-          <button className="cta rv" id="sur">Tap for a surprise 💌</button>
-          <p id="surprise">Happy Anniversary, my love. Thank you for every smile, every hug, and every memory. This is just the beginning of our forever. ❤️</p>
+          <button className="cta rv" id="sur">A note for you</button>
+          <p id="surprise">Happy Anniversary, my love. Thank you for every smile, every hug, and every memory. This is just the beginning of our forever.</p>
         </section>
-        <footer>Made with ❤️ only for you<br />Created by: Yash Patel - Magento 2 Developer</footer>
+        <footer>MADE WITH LOVE, FOR {CONFIG.name2.toUpperCase()}</footer>
       </main>
 
-      <div id="lb"><img alt="" /></div>
+      <div id="lb"><img alt="Expanded memory" /></div>
       <Effects />
     </>
   );
