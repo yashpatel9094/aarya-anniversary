@@ -33,15 +33,16 @@ export default function Effects() {
     }), { threshold: 0.18 });
     $$('.rv').forEach((element) => observer.observe(element));
 
-    $$('.ph').forEach((card) => card.addEventListener('click', () => {
-      const image = card.querySelector('img');
-      const lightboxImage = $('#lb img');
-      if (image && lightboxImage) {
-        lightboxImage.src = image.currentSrc || image.src;
-        $('#lb')?.classList.add('on');
-      }
-    }));
-    $('#lb')?.addEventListener('click', () => $('#lb')?.classList.remove('on'));
+    const flipCard = (card) => card.classList.toggle('flipped');
+    $$('.ph').forEach((card) => {
+      card.addEventListener('click', () => flipCard(card));
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          flipCard(card);
+        }
+      });
+    });
     $('#sur')?.addEventListener('click', () => $('#surprise')?.classList.add('on'));
     return () => { window.clearInterval(timer); observer.disconnect(); };
   }, []);

@@ -7,6 +7,17 @@ const Pic = ({ n }) => (
 );
 
 const memories = ['Where it all began', 'Us, always', 'A beautiful day', 'Every moment', 'Just us', 'A little adventure', 'Pure joy', 'Together', 'Forever'];
+const memoryNotes = [
+  'Teri muskaan mein meri har khushi ka pata milta hai.',
+  'Tere saath har raasta ghar jaisa lagta hai.',
+  'Tum ho toh har pal thoda aur khoobsurat lagta hai.',
+  'Meri favourite jagah hamesha tumhare paas rahegi.',
+  'Ek tumhara saath, aur duniya se kya chahiye.',
+  'Tum meri kahani ka sabse pyaara hissa ho.',
+  'Har yaad mein tum ho, har dua mein bhi tum ho.',
+  'Tumhare saath zindagi ek khoobsurat safar hai.',
+  'Aaj, kal aur hamesha — bas tum aur main.',
+];
 const notes = [
   ['You are the reason my ordinary days feel like a movie. Thank you for being my person.', 'Always yours'],
   ['Tere saath chalte chalte pata hi nahi chala, kab tu meri aadat se meri zaroorat ban gayi.', 'Meri jaan'],
@@ -70,7 +81,14 @@ export default function Home() {
             <p className="section-intro rv">A small collection of the moments that still make us smile.</p>
           </div>
           <div className="gal">
-            {memories.map((caption, index) => <figure className="ph" key={caption}><Pic n={index + 1} /><figcaption>{caption}</figcaption></figure>)}
+            {memories.map((caption, index) => (
+              <figure className="ph" key={caption} tabIndex="0" aria-label={`Flip ${caption} memory card`}>
+                <div className="memory-card">
+                  <div className="memory-front"><Pic n={index + 1} /><figcaption>{caption}</figcaption></div>
+                  <div className="memory-back"><span className="note-mark">✦</span><p>{memoryNotes[index]}</p><small>Tap to see the memory</small></div>
+                </div>
+              </figure>
+            ))}
           </div>
         </section>
 
@@ -90,7 +108,6 @@ export default function Home() {
         <footer>MADE WITH LOVE, FOR {CONFIG.name2.toUpperCase()}</footer>
       </main>
 
-      <div id="lb"><img alt="Expanded memory" /></div>
       <Effects />
     </>
   );
